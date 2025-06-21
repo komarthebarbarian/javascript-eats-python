@@ -11,6 +11,12 @@ body {
   font-family: sans-serif;
 }
 
+html,
+body {
+  overscroll-behavior: none;
+  touch-action: none; /* prevent default gestures */
+}
+
 h1 {
   margin: 20px;
 }
@@ -106,24 +112,6 @@ canvas {
   background-color: #666;
   font-weight: bold;
 }
-
-/* #gameOverMessage {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(20, 20, 20, 0.9);
-  padding: 30px 40px;
-  border: 2px solid red;
-  border-radius: 10px;
-  color: white;
-  font-size: 1.5rem;
-  z-index: 20;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-} */
 
 #gameOverMessage {
   position: absolute;
