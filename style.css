@@ -11,12 +11,6 @@ body {
   font-family: sans-serif;
 }
 
-html,
-body {
-  overscroll-behavior: none;
-  touch-action: none; /* prevent default gestures */
-}
-
 h1 {
   margin: 20px;
   text-align: center;
