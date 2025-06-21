@@ -306,25 +306,35 @@ function drawGame() {
 let touchStartX = 0;
 let touchStartY = 0;
 
-canvas.addEventListener("touchstart", (e) => {
-  const touch = e.touches[0];
-  touchStartX = touch.clientX;
-  touchStartY = touch.clientY;
-});
+canvas.addEventListener(
+  "touchstart",
+  (e) => {
+    e.preventDefault(); // prevent the damn scrolling
+    const touch = e.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+  },
+  { passive: false }
+);
 
-canvas.addEventListener("touchend", (e) => {
-  const touch = e.changedTouches[0];
-  const dx = touch.clientX - touchStartX;
-  const dy = touch.clientY - touchStartY;
+canvas.addEventListener(
+  "touchend",
+  (e) => {
+    e.preventDefault(); // prevent the damn scrolling
+    const touch = e.changedTouches[0];
+    const dx = touch.clientX - touchStartX;
+    const dy = touch.clientY - touchStartY;
 
-  if (Math.abs(dx) > Math.abs(dy)) {
-    if (dx > 0 && direction.x === 0) nextDirection = { x: 1, y: 0 }; // right
-    if (dx < 0 && direction.x === 0) nextDirection = { x: -1, y: 0 }; // left
-  } else {
-    if (dy > 0 && direction.y === 0) nextDirection = { x: 0, y: 1 }; // down
-    if (dy < 0 && direction.y === 0) nextDirection = { x: 0, y: -1 }; // up
-  }
-});
+    if (Math.abs(dx) > Math.abs(dy)) {
+      if (dx > 0 && direction.x === 0) nextDirection = { x: 1, y: 0 };
+      if (dx < 0 && direction.x === 0) nextDirection = { x: -1, y: 0 };
+    } else {
+      if (dy > 0 && direction.y === 0) nextDirection = { x: 0, y: 1 };
+      if (dy < 0 && direction.y === 0) nextDirection = { x: 0, y: -1 };
+    }
+  },
+  { passive: false }
+);
 
 updateScoreDisplay();
 applyLanguage();
